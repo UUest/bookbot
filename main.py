@@ -16,15 +16,15 @@ def main():
 
 
 
-def get_book_text(path):
+def get_book_text(path: str) -> str:
     with open(path) as f:
         return f.read()
     
-def get_word_count(text):
+def get_word_count(text: str) -> int:
     word_list = text.split()
     return len(word_list)
 
-def get_char_count(text):
+def get_char_count(text: str) -> dict:
     char_count_dict = {}
     for char in text:
         lowered_char = char.lower()
@@ -34,13 +34,13 @@ def get_char_count(text):
             char_count_dict[lowered_char] = 1
     return char_count_dict
 
-def dict_to_listofdicts(dict):
+def dict_to_listofdicts(dict: dict) -> list:
     return [{'char': key, 'num': value} for key, value in dict.items()]
 
-def sort_on(dict):
+def sort_on(dict: dict) -> int:
     return dict["num"]
 
-def print_pretty_list(dict_list):
+def print_pretty_list(dict_list: list):
     for dict in dict_list:
         char = dict["char"]
         num = dict["num"]
