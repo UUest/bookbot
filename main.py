@@ -1,5 +1,12 @@
+from os import sep
+from stats import get_word_count
+import sys
+
 def main():
-    book_path = "books/frankenstein.txt"
+    if len(sys.argv) != 2:
+        print("Usage: python3 main.py <path_to_book>")
+        sys.exit(1)
+    book_path = sys.argv[1]
     text = get_book_text(book_path)
     num_words = get_word_count(text)
     char_count = get_char_count(text)
@@ -11,18 +18,16 @@ def main():
     print_pretty_list(dict_list)
     print("\n")
     print("--- End report ---")
-    
-    
+
+
 
 
 
 def get_book_text(path: str) -> str:
     with open(path) as f:
         return f.read()
-    
-def get_word_count(text: str) -> int:
-    word_list = text.split()
-    return len(word_list)
+
+
 
 def get_char_count(text: str) -> dict:
     char_count_dict = {}
@@ -45,7 +50,7 @@ def print_pretty_list(dict_list: list):
         char = dict["char"]
         num = dict["num"]
         if char.isalpha():
-            print(f"The '{char}' character was found {num} times")
+            print(f"{char}: {num}")
 
 
 
